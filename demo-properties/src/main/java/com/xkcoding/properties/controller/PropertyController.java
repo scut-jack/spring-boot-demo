@@ -7,19 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * <p>
- * 测试Controller
- * </p>
- *
- * @author yangkai.shen
- * @date Created in 2018-09-29 10:49
- */
 @RestController
 public class PropertyController {
     private final ApplicationProperty applicationProperty;
     private final DeveloperProperty developerProperty;
 
+    /*一种对象注入方式，大部分情况是注解到属性上或者属性的setter函数上*/
     @Autowired
     public PropertyController(ApplicationProperty applicationProperty, DeveloperProperty developerProperty) {
         this.applicationProperty = applicationProperty;
