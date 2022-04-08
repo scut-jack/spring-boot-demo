@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * <p>
  * 测试Controller
- * </p>
+ * Controller方法中抛出的Exception可以被@ControllerAdvice注解的类中@ExceptionHandler注解的方法捕获到
+ * 这是Springmvc @ControllerAdvice注解提供的全局异常处理功能
  *
  * @author yangkai.shen
  * @date Created in 2018-10-02 20:49

@@ -62,6 +62,17 @@ public class ApiResponse {
     }
 
     /**
+     * 构造一个有状态且带数据的API返回
+     *
+     * @param status 状态 {@link Status}
+     * @param data   返回数据
+     * @return ApiResponse
+     */
+    public static ApiResponse ofStatus(Status status, Object data) {
+        return of(status.getCode(), status.getMessage(), data);
+    }
+
+    /**
      * 构造一个成功且带数据的API返回
      *
      * @param data 返回数据
@@ -89,17 +100,6 @@ public class ApiResponse {
      */
     public static ApiResponse ofStatus(Status status) {
         return ofStatus(status, null);
-    }
-
-    /**
-     * 构造一个有状态且带数据的API返回
-     *
-     * @param status 状态 {@link Status}
-     * @param data   返回数据
-     * @return ApiResponse
-     */
-    public static ApiResponse ofStatus(Status status, Object data) {
-        return of(status.getCode(), status.getMessage(), data);
     }
 
     /**

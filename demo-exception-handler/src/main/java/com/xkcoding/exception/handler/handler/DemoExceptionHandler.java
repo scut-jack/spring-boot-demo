@@ -24,6 +24,7 @@ public class DemoExceptionHandler {
 
     /**
      * 统一 json 异常处理
+     * 代替Controller方法对请求进行处理返回，@ResponseBody注解可以将返回对象序列化为json数据
      *
      * @param exception JsonException
      * @return 统一返回 json 格式
@@ -37,6 +38,9 @@ public class DemoExceptionHandler {
 
     /**
      * 统一 页面 异常处理
+     * 返回ModelAndView对象向thymeleaf模版传递参数（需引入thymeleaf包，否则无法解析ModelAndView对象）
+     * view.setViewName(DEFAULT_ERROR_VIEW) 属性代表要展示哪个页面静态文件（例如本例：error.html）；
+     * view.addObject("message", exception.getMessage()) 属性代表向页面属性message 发送的值
      *
      * @param exception PageException
      * @return 统一跳转到异常页面
