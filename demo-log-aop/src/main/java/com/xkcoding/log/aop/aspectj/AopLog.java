@@ -11,8 +11,10 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
@@ -45,6 +47,26 @@ public class AopLog {
     @Pointcut("execution(public * com.xkcoding.log.aop.controller.*Controller.*(..))")
     public void log() {
 
+    }
+
+    /**
+     * 方法执行前操作
+     * @return 原方法返回值
+     * @throws Throwable 异常信息
+     */
+    @Before("log()")
+    public void beforeLog() throws Throwable {
+        log.info("Method start.");
+    }
+
+    /**
+     * 方法执行后操作
+     * @return 原方法返回值
+     * @throws Throwable 异常信息
+     */
+    @After("log()")
+    public void afterLog() throws Throwable {
+        log.info("Method finished.");
     }
 
     /**
@@ -88,7 +110,8 @@ public class AopLog {
     }
 
     /**
-     *  获取方法参数名和参数值
+     * 获取方法参数名和参数值
+     *
      * @param joinPoint
      * @return
      */
