@@ -25,6 +25,11 @@ public class IndexController {
     public ModelAndView index(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
 
+        /* 接口HttpServletRequest继承自ServletRequest
+         * 客户端浏览器发出的请求，会被封装成为一个HttpServletRequest对象。
+         * 请求的所有的信息，包括请求的地址、请求的参数、提交的数据、上传的文件、客户端的ip，甚至客户端操作系统都包含在其内。
+         * servlet容器会创建一个HttpServletRequest对象，并将其转换为servlet的service、doGet、 doPost等方法的参数。
+         * */
         User user = (User) request.getSession().getAttribute("user");
         if (ObjectUtil.isNull(user)) {
             mv.setViewName("redirect:/user/login");
